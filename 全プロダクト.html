@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クリニックオートメーション | 株式会社GENOVA</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Base */
+        body { font-family: 'Hiragino Sans', 'Meiryo', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #fff; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        
+        /* ヘッダー・FV */
+        .fv { background: linear-gradient(135deg, #0052cc 0%, #003399 100%); color: #fff; padding: 60px 0; text-align: center; }
+        
+        /* クリニックオートメーションを最大化 */
+        .fv-sub { 
+            font-size: clamp(2.5rem, 8vw, 4.5rem); /* レスポンシブに最大化 */
+            font-weight: 900; 
+            color: #ffd700; 
+            margin-bottom: 15px; 
+            display: block; 
+            letter-spacing: 0.05em;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            line-height: 1.1;
+        }
+        /* 一行に統一 */
+        .fv-main { 
+            font-size: clamp(1rem, 3vw, 1.6rem); 
+            margin-bottom: 30px; 
+            font-weight: bold; 
+            white-space: nowrap; /* 折り返し防止 */
+        }
+        .fv-image { width: 100%; max-width: 700px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+
+        /* 悩みセクション */
+        .section-problem { background-color: #f0f4f8; padding: 50px 0 70px; }
+        .section-title { text-align: center; font-size: 1.6rem; color: #0052cc; margin-bottom: 25px; font-weight: bold; }
+        .check-list { background: #fff; padding: 25px 30px; border-radius: 12px; border-top: 6px solid #0052cc; box-shadow: 0 8px 15px rgba(0,0,0,0.05); max-width: 800px; margin: 0 auto 40px; }
+        .check-item { margin-bottom: 12px; font-weight: bold; display: flex; align-items: flex-start; font-size: 1rem; }
+        .check-item i { color: #ff6b00; margin-right: 12px; font-size: 1.3rem; margin-top: 2px; }
+
+        /* お任せください画像セクション */
+        .trust-area { text-align: center; margin-top: 40px; }
+        .trust-text { 
+            font-size: 2rem; 
+            color: #ff6b00; 
+            font-weight: 900; 
+            margin-bottom: 20px;
+            display: block;
+        }
+        .trust-image { width: 100%; max-width: 850px; height: auto; border-radius: 10px; }
+
+        /* ソリューション共通 */
+        .solution-section { padding: 70px 0; }
+        .step-box { display: flex; flex-wrap: wrap; align-items: center; margin-bottom: 60px; gap: 40px; }
+        .step-box:nth-child(even) { flex-direction: row-reverse; }
+        .step-img { flex: 1; min-width: 320px; }
+        .step-img img { width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .step-content { flex: 1.2; min-width: 320px; }
+        .step-badge { background: #eef4ff; color: #0052cc; padding: 3px 12px; border-radius: 50px; font-size: 0.85rem; font-weight: bold; border: 1px solid #0052cc; display: inline-block; margin-bottom: 8px; }
+        .step-title { font-size: 1.8rem; color: #0052cc; margin: 0 0 10px 0; font-weight: 800; }
+        .highlight { background: linear-gradient(transparent 60%, #ffffbc 60%); font-weight: bold; }
+        
+        .recommend-box { background: #fffcf5; border-left: 5px solid #ff6b00; padding: 15px; border-radius: 6px; margin: 15px 0; }
+        .recommend-title { color: #d32f2f; font-weight: bold; font-size: 0.95rem; margin-bottom: 5px; }
+        .recommend-list { margin: 0; padding-left: 18px; font-size: 0.85rem; color: #555; }
+        
+        .product-link-btn {
+            display: inline-block;
+            background-color: #ff6b00;
+            color: #fff !important;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            margin: 10px 10px 0 0;
+            transition: 0.2s;
+            box-shadow: 0 4px 0 #c45200;
+        }
+        .product-link-btn:hover { transform: translateY(-2px); background-color: #ff8533; box-shadow: 0 6px 0 #c45200; }
+
+        /* CTA */
+        .cta-section { text-align: center; padding: 80px 0; background: #003399; color: #fff; }
+        .btn-large { display: inline-block; padding: 22px 60px; background-color: #ff6b00; color: #fff !important; text-decoration: none; font-size: 1.5rem; font-weight: bold; border-radius: 50px; box-shadow: 0 6px 0 #c45200; transition: 0.2s; }
+        .btn-large:hover { transform: scale(1.05); }
+
+        @media (max-width: 768px) {
+            .fv-main { white-space: normal; font-size: 1.2rem; }
+            .trust-text { font-size: 1.5rem; }
+            .step-img, .step-content { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="fv">
+    <div class="container">
+        <span class="fv-sub">クリニックオートメーション</span>
+        <h1 class="fv-main">集患・予約・会計を一つの流れで最適化するDX。</h1>
+        <img src="https://go.pardot.com/l/251532/2026-02-09/2vrsh5j/251532/1770625889kVPWJ44u/_AI_24_365_AI_19_.png" alt="Clinic Automation" class="fv-image">
+    </div>
+</section>
+
+<section class="section-problem">
+    <div class="container">
+        <h2 class="section-title">こんな「現場の悲鳴」に心当たりはありませんか？</h2>
+        <div class="check-list">
+            <div class="check-item"><i class="fas fa-check-circle"></i><span>電話が鳴り止まず、受付スタッフが常に接客を中断させられている</span></div>
+            <div class="check-item"><i class="fas fa-check-circle"></i><span>会計待ちの列が診察室の前まで伸び、患者さんの視線が痛い</span></div>
+            <div class="check-item"><i class="fas fa-check-circle"></i><span>予約・問診・カルテが別々のシステムで、二重入力の手間が限界</span></div>
+            <div class="check-item"><i class="fas fa-check-circle"></i><span>集患のために広告を出したいが、対応できるスタッフに全く余裕がない</span></div>
+            <div class="check-item"><i class="fas fa-check-circle"></i><span>「待ち時間が長い」という口コミを書かれ、具体的な改善策が見つからない</span></div>
+        </div>
+
+        <div class="trust-area">
+            <span class="trust-text">我々にすべてお任せください！</span>
+            <img src="https://go.pardot.com/l/251532/2026-02-20/2vrsx7z/251532/1771578772CRkmDBJT/GENOVA_LP.png" alt="我々にすべてお任せください" class="trust-image">
+        </div>
+    </div>
+</section>
+
+<section class="solution-section">
+    <div class="container">
+        
+        <div class="step-box">
+            <div class="step-img"><img src="https://go.pardot.com/l/251532/2026-02-09/2vrsh7f/251532/17706260037UVPTYZq/Medical_DOC.png" alt="Medical DOC"></div>
+            <div class="step-content">
+                <span class="step-badge">STEP 01</span>
+                <h3 class="step-title">Medical DOC</h3>
+                <p class="step-text"><span class="highlight">医師監修の専門記事</span>により、来院前の患者さんに「安心感」を提供。MEOやSEOを駆使し、地域で選ばれるブランディングを自動化します。</p>
+                <div class="recommend-box">
+                    <div class="recommend-title">📌 こんな方におすすめ</div>
+                    <ul class="recommend-list">
+                        <li>Web予約を増やしたいが、どこから手を付けていいか不明</li>
+                        <li>集患施策がマンネリ化している</li>
+                    </ul>
+                </div>
+                <a href="https://medicaldoclp.com/" class="product-link-btn" target="_blank">詳細をチェック！</a>
+            </div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-img"><img src="https://go.pardot.com/l/251532/2026-02-09/2vrsh9j/251532/1770627127RfiPhrY9/Medical_DOC__4_.png" alt="AIコール"></div>
+            <div class="step-content">
+                <span class="step-badge">STEP 02</span>
+                <h3 class="step-title">AIコール / AIチャット</h3>
+                <p class="step-text"><span class="highlight">AIが24時間体制</span>で予約受付や質問回答を代行。スタッフが電話対応に追われる時間をゼロにし、対面接客の質を高めます。</p>
+                <div class="recommend-box">
+                    <div class="recommend-title">📌 こんな方におすすめ</div>
+                    <ul class="recommend-list">
+                        <li>診療時間外の予約を逃したくない</li>
+                        <li>電話対応で受付の業務が止まるのを防ぎたい</li>
+                    </ul>
+                </div>
+                <a href="https://nomoca.net/nomoca_ai_call/" class="product-link-btn" target="_blank">AIコールの詳細</a>
+                <a href="https://nomoca.net/nomocaaichat/" class="product-link-btn" target="_blank">AIチャットの詳細</a>
+            </div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-img"><img src="https://go.pardot.com/l/251532/2026-02-09/2vrsh7j/251532/1770626170cIO5PZsy/Medical_DOC__1_.png" alt="Smart One"></div>
+            <div class="step-content">
+                <span class="step-badge">STEP 03</span>
+                <h3 class="step-title">Smart One</h3>
+                <p class="step-text">予約〜問診〜カルテ連携を一つの流れに。<span class="highlight">LINE連携</span>で患者さんの利便性を高め、事務作業の二重入力を根絶します。</p>
+                <div class="recommend-box">
+                    <div class="recommend-title">📌 こんな方におすすめ</div>
+                    <ul class="recommend-list">
+                        <li>予約〜来院、問診までを一気通貫で管理したい</li>
+                        <li>再診率（リピート率）を向上させたい</li>
+                    </ul>
+                </div>
+                <a href="https://smart-one.genova.co.jp/" class="product-link-btn" target="_blank">Smart Oneの詳細</a>
+            </div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-img"><img src="https://go.pardot.com/l/251532/2026-02-09/2vrsh81/251532/1770626570gAgcoGzY/Medical_DOC__2_.png" alt="チームラボ"></div>
+            <div class="step-content">
+                <span class="step-badge">STEP 04</span>
+                <h3 class="step-title">チームラボ・キッズ</h3>
+                <p class="step-text">待ち時間を<span class="highlight">「遊びの時間」</span>に変えるデジタルアート。お子様連れの満足度を高め、「また来たい」と思われるクリニック作りを支援します。</p>
+                <div class="recommend-box">
+                    <div class="recommend-title">📌 こんな方におすすめ</div>
+                    <ul class="recommend-list">
+                        <li>待ち時間のクレームを減らしたい</li>
+                        <li>地域で一番、親子に優しいクリニックになりたい</li>
+                    </ul>
+                </div>
+                <a href="https://nomoca.net/teamlab.c1/" class="product-link-btn" target="_blank">チームラボの詳細</a>
+            </div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-img"><img src="https://go.pardot.com/l/251532/2026-02-09/2vrsh91/251532/1770626685aHlzQ4Zb/Medical_DOC__3_.png" alt="NOMOCa-Stand"></div>
+            <div class="step-content">
+                <span class="step-badge">STEP 05</span>
+                <h3 class="step-title">NOMOCa-Stand</h3>
+                <p class="step-text"><span class="highlight">カルテ連携率96.6%</span>の自動精算機。会計ミスをゼロにし、レジ締めを数分で終わらせます。キャッシュレス対応もこれ一台で完結。</p>
+                <div class="recommend-box">
+                    <div class="recommend-title">📌 こんな方におすすめ</div>
+                    <ul class="recommend-list">
+                        <li>お金の管理ストレスをなくしたい</li>
+                        <li>会計の待ち行列をスムーズに解消したい</li>
+                    </ul>
+                </div>
+                <a href="https://nomoca.net/" class="product-link-btn" target="_blank">自動精算機の詳細</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2 style="font-size: 1.8rem; margin-bottom: 20px;">「人が足りない」を、仕組みで解決する。</h2>
+        <a href="https://genova.co.jp/service/contact.html" class="btn-large">
+            無料で相談・資料請求する <i class="fas fa-chevron-right" style="margin-left: 10px;"></i>
+        </a>
+    </div>
+</section>
+
+<footer style="padding: 30px 0; text-align: center; font-size: 0.8rem; color: #888; background: #f4f7f9;">
+    &copy; 2026 GENOVA, Inc. All Rights Reserved.
+</footer>
+
+</body>
+</html>
