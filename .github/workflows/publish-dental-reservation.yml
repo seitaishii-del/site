@@ -1,0 +1,44 @@
+name: Publish Dental Reservation LP
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "genova-dental-reservation/**"
+      - ".github/workflows/publish-dental-reservation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "dental-reservation-pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Prepare static files
+        run: |
+          mkdir -p _site
+          cp index.html _site/index.html
+          cp -R genova-dental-reservation _site/
+          touch _site/.nojekyll
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: "_site"
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
